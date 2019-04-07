@@ -13,7 +13,7 @@ all: $(BIN)
 	$(CC) $(CFLAGS) $(INCLUDES) -g -c $< -o $@ -Wno-deprecated-declarations
 
 $(BIN): $(OBJS)
-	$(CC) -o $@ -Wl,--whole-archive $(OBJS) $(LDFLAGS) -Wl,--no-whole-archive -rdynamic
+	$(CC) -o $@ -Wl,--whole-archive,-rpath=../lib $(OBJS) $(LDFLAGS) -Wl,--no-whole-archive -rdynamic
 
 clean:
 	@rm -f $(OBJS)
